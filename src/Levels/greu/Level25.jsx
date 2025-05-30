@@ -14,8 +14,15 @@ function Level25({ uid, loading_comp }) {
     getData();
   }, []);
   const [value, setValue] = useState(0);
+  const [sol, setSol] = useState("");
+  useEffect(() => {
+    if (!loading_comp)
+      startLevel(uid, getLevel()).then((res) => {
+        setSol(res);
+      });
+  }, [, loading_comp]);
   const check = () => {
-    if (parseInt(value) === parseInt(process.env.REACT_APP_LEVEL_25)) {
+    if (parseInt(value) === parseInt(sol)) {
       updateLevel(uid, 25, "greu");
       alert("e ok");
       to("/alege");
@@ -32,12 +39,6 @@ function Level25({ uid, loading_comp }) {
       }
     });
   };
-
-  useEffect(() => {
-    if (!loading_comp) {
-      startLevel(uid, getLevel());
-    }
-  }, [, loading_comp]);
 
   return (
     <div className="level">

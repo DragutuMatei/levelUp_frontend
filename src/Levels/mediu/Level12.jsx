@@ -5,10 +5,15 @@ import Poveste from "../../Pages/Poveste";
 // 0x20
 function Level12({ uid, loading_comp }) {
   const [value, setValue] = useState("");
+
   const [c, setc] = useState([
-    process.env.REACT_APP_LEVEL_12_V1,
-    process.env.REACT_APP_LEVEL_12_V2,
   ]);
+  useEffect(() => {
+    if (!loading_comp)
+      startLevel(uid, getLevel()).then((res) => {
+        setc(res.split("~"))
+      });
+  }, [, loading_comp]);
   const check = () => {
     if (c.includes(value.trim().toLowerCase())) {
       updateLevel(uid, 13, "mediu");
@@ -18,11 +23,7 @@ function Level12({ uid, loading_comp }) {
       alert("nu e ok");
     }
   };
-  useEffect(() => {
-    if (!loading_comp) {
-      startLevel(uid, getLevel());
-    }
-  }, [, loading_comp]);
+  
   const hint = async (uid, level) => {
     await getHint(uid, level).then((res) => {
       if (res.data.ok) {

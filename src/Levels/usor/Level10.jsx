@@ -5,8 +5,15 @@ import Poveste from "../../Pages/Poveste";
 
 function Level10({ uid, loading_comp }) {
   const [value, setValue] = useState("");
+  const [sol, setSol] = useState("");
+    useEffect(() => {
+      if (!loading_comp)
+        startLevel(uid, getLevel()).then((res) => {
+          setSol(res);
+        });
+    }, [, loading_comp]);
   const check = () => {
-    if (value.trim().toLowerCase() == process.env.REACT_APP_LEVEL_10) {
+    if (value.trim().toLowerCase() ==sol) {
       updateLevel(uid, 11, "usor");
       alert("e ok");
       to("/level11");
@@ -19,11 +26,6 @@ function Level10({ uid, loading_comp }) {
        
     });
   };
-  useEffect(() => {
-    if (!loading_comp) {
-      startLevel(uid, getLevel());
-    }
-  }, [, loading_comp]);
 
   return (
     <div className="level">

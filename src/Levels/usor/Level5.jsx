@@ -10,11 +10,12 @@ function Level5({ uid, loading_comp }) {
   const read = (e) => {
     setTxt(fileReader.result);
   };
-
+const [sol, setSol] = useState("");
   useEffect(() => {
-    if (!loading_comp) {
-      startLevel(uid, getLevel());
-    }
+    if (!loading_comp)
+      startLevel(uid, getLevel()).then((res) => {
+        setSol(res);
+      });
   }, [, loading_comp]);
 
   const change = (file) => {
@@ -25,7 +26,7 @@ function Level5({ uid, loading_comp }) {
 
   const [val, setVal] = useState("");
   const check = () => {
-    if (val.trim().toLowerCase() === process.env.REACT_APP_LEVEL_5) {
+    if (val.trim().toLowerCase() === sol) {
       updateLevel(uid, 6, "usor");
       alert("e ok");
       to("/level6");

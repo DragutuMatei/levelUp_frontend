@@ -7,13 +7,16 @@ import Poveste from "../../Pages/Poveste";
 
 function Level3({ uid, loading_comp }) {
   const [value, setValue] = useState("");
-
+  const [sol, setSol] = useState("");
+  useEffect(() => {
+    if (!loading_comp)
+      startLevel(uid, getLevel()).then((res) => {
+        setSol(res);
+      });
+  }, [, loading_comp]);
   const evaluete = (val) => {
     const vall = val.trim().toLowerCase();
-    if (
-      vall === process.env.REACT_APP_LEVEL_3_V1 ||
-      vall === process.env.REACT_APP_LEVEL_3_V2
-    ) {
+    if (vall === sol.split("~")[0] || vall === sol.split("~")[1]) {
       updateLevel(uid, 4, "usor");
       alert("e ok");
       to("/level4");
@@ -22,12 +25,6 @@ function Level3({ uid, loading_comp }) {
       setValue("");
     }
   };
-
-  useEffect(() => {
-    if (!loading_comp) {
-      startLevel(uid, getLevel());
-    }
-  }, [, loading_comp]);
 
   const hint = async (uid, level) => {
     await getHint(uid, level).then((res) => {

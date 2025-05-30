@@ -7,11 +7,17 @@ import { Link } from "react-router-dom";
 
 function Level24({ uid, loading_comp }) {
   const [text, setText] = useState("");
-
+const [sol, setSol] = useState("");
+  useEffect(() => {
+    if (!loading_comp)
+      startLevel(uid, getLevel()).then((res) => {
+        setSol(res);
+      });
+  }, [, loading_comp]);
   const check = () => {
     if (
-      text.trim().toLowerCase() === process.env.REACT_APP_LEVEL_24_V1 ||
-      text.trim().toLowerCase() === process.env.REACT_APP_LEVEL_24_V2
+      text.trim().toLowerCase() === sol.split("~")[0] ||
+      text.trim().toLowerCase() === sol.split("~")[1]
     ) {
       updateLevel(uid, 25, "greu");
       alert("e ok");
@@ -29,11 +35,6 @@ function Level24({ uid, loading_comp }) {
       }
     });
   };
-  useEffect(() => {
-    if (!loading_comp) {
-      startLevel(uid, getLevel());
-    }
-  }, [, loading_comp]);
 
   return (
     <div className="level">

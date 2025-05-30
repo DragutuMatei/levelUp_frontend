@@ -7,10 +7,13 @@ import Poveste from "../../Pages/Poveste";
 function Level6({ uid, loading_comp }) {
   const inputRef = useRef();
   const [img, setImg] = useState("");
-
+const [sol, setSol] = useState("");
+  
   useEffect(() => {
     if (!loading_comp)
-      startLevel(uid, getLevel());
+      startLevel(uid, getLevel()).then((res) => {
+        setSol(res);
+      });
   }, [, loading_comp]);
 
   const check1 = () => {
@@ -28,7 +31,7 @@ function Level6({ uid, loading_comp }) {
       setTimeout(() => {
         setImg(value1);
       }, 100);
-    } else if (value1.trim().toLowerCase() == process.env.REACT_APP_LEVEL_6) {
+    } else if (value1.trim().toLowerCase() == sol) {
       updateLevel(uid, 7, "usor");
       alert("e ok");
       to("/level7");

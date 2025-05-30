@@ -11,8 +11,16 @@ const Level7 = ({ uid, loading_comp }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const fileInputRef = useRef(null);
   const [text, setText] = useState("");
+  const [sol, setSol] = useState("");
+    useEffect(() => {
+      if (!loading_comp)
+        startLevel(uid, getLevel()).then((res) => {
+          setSol(res);
+        });
+    }, [, loading_comp]);
+  
   const check = () => {
-    if (text.toLowerCase().trim() === process.env.REACT_APP_LEVEL_7) {
+    if (text.toLowerCase().trim() === sol) {
       updateLevel(uid, 8, "usor");
       alert("e ok");
       to("/level8");
@@ -21,6 +29,8 @@ const Level7 = ({ uid, loading_comp }) => {
       setText("");
     }
   };
+
+  
 
   useEffect(() => {
     if (!localStorage.getItem("download")) {
@@ -31,9 +41,8 @@ const Level7 = ({ uid, loading_comp }) => {
       link.remove();
 
       localStorage.setItem("download", "true");
-    }
-    if (!loading_comp) startLevel(uid, getLevel());
-  }, [, loading_comp]);
+    } 
+  }, []);
   // Noduri audio
   const nodes = useRef({});
 

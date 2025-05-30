@@ -10,11 +10,19 @@ function Level11({ uid, loading_comp }) {
   const [value1, setValue1] = useState("");
   const [value2, setValue2] = useState("");
 
+  const [sol, setSol] = useState("");
+    useEffect(() => {
+      if (!loading_comp)
+        startLevel(uid, getLevel()).then((res) => {
+          setSol(res);
+        });
+    }, [, loading_comp]);
+
   const check = () => {
     if (
-      value.trim() == process.env.REACT_APP_LEVEL_11_V1 &&
-      value2.trim() == process.env.REACT_APP_LEVEL_11_V3 &&
-      value1.trim() == process.env.REACT_APP_LEVEL_11_V2
+      value.trim() == sol.split("~")[0] &&
+      value1.trim() == sol.split("~")[1] &&
+      value2.trim() == sol.split("~")[2] 
     ) {
       updateLevel(uid, 12, "mediu");
       alert("e ok");
@@ -32,12 +40,7 @@ function Level11({ uid, loading_comp }) {
       }
     });
   };
-
-  useEffect(() => {
-    if (!loading_comp) {
-      startLevel(uid, getLevel());
-    }
-  }, [, loading_comp]);
+ 
 
   const generateVal = () => {
     const cifre = [0, 1];
@@ -54,7 +57,7 @@ function Level11({ uid, loading_comp }) {
     }
 
     array[Math.floor(Math.random() * array.length)] =
-      process.env.REACT_APP_LEVEL_11_V1;
+      sol.split("~")[0];
     return array;
   };
   const generateVal1 = () => {
@@ -71,7 +74,7 @@ function Level11({ uid, loading_comp }) {
       );
     }
     const index = Math.floor(Math.random() * array.length);
-    array[index] = process.env.REACT_APP_LEVEL_11_V2;
+    array[index] = sol.split("~")[1];
     return array;
   };
   const [generated, setg] = useState(generateVal());

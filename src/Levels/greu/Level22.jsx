@@ -11,14 +11,16 @@ const client = createClient(
 function Level22({ loading_comp, uid }) {
   const [selectedFolder, setSelectedFolder] = useState(null);
   const [openedPhoto, setOpenedPhoto] = useState(null); // <-- nou state pentru poza mare
-  useEffect(() => {
-    if (!loading_comp) {
-      startLevel(uid, getLevel());
-    }
-  }, [, loading_comp]);
+  const [sol, setSol] = useState("");
+    useEffect(() => {
+      if (!loading_comp)
+        startLevel(uid, getLevel()).then((res) => {
+          setSol(res);
+        });
+    }, [, loading_comp]);
   const [text, setText] = useState("");
   const check = () => {
-    if (text.trim().toLowerCase() === process.env.REACT_APP_LEVEL_22) {
+    if (text.trim().toLowerCase() === sol) {
       updateLevel(uid, 23, "greu");
       alert("e ok");
       to("/level23");

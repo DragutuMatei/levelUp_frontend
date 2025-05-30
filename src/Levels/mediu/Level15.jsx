@@ -142,8 +142,18 @@ function Level15({ uid, loading_comp }) {
   //   test();
 
   const [val, setVal] = useState();
+
+  const [sol, setSol] = useState("");
+    useEffect(() => {
+      if (!loading_comp)
+        startLevel(uid, getLevel()).then((res) => {
+          setSol(res);
+        });
+    }, [, loading_comp]);
+
+
   const check = () => {
-    if (val.trim().toLowerCase() === process.env.REACT_APP_LEVEL_15) {
+    if (val.trim().toLowerCase() === sol) {
       updateLevel(uid, 16, "mediu");
       alert("e ok");
       to("/level16");
@@ -163,14 +173,7 @@ function Level15({ uid, loading_comp }) {
       }
     });
   };
-
-  useEffect(() => {
-    if (!loading_comp)
-      startLevel(uid, getLevel())
-      //   .catch((err) => {
-      //   console.log(err);
-      // });
-  }, [, loading_comp]);
+ 
 
   return (
     <div className="level">

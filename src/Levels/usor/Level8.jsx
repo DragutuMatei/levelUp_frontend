@@ -37,8 +37,17 @@ function Level8({ uid, loading_comp }) {
     });
   };
   const [val, setVal] = useState("");
+
+  const [sol, setSol] = useState("");
+    useEffect(() => {
+      if (!loading_comp)
+        startLevel(uid, getLevel()).then((res) => {
+          setSol(res);
+        });
+    }, [, loading_comp]);
+
   const check = () => {
-    if (val.trim().toLowerCase() == process.env.REACT_APP_LEVEL_8) {
+    if (val.trim().toLowerCase() == sol) {
       updateLevel(uid, 9, "usor");
       alert("e ok");
       sessionStorage.clear();
@@ -56,12 +65,7 @@ function Level8({ uid, loading_comp }) {
       }
     });
   };
-
-  useEffect(() => {
-    if (!loading_comp) {
-      startLevel(uid, getLevel());
-    }
-  }, [, loading_comp]);
+ 
   return (
     <div className="level">
       {!loading_comp ? (

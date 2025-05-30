@@ -180,11 +180,13 @@ function Level14({ uid, loading_comp }) {
       generateNodes();
     }
   }, [generateNodes]); 
-  useEffect(() => {
-    if (!loading_comp) {
-      startLevel(uid, getLevel());
-    }
-  }, [,loading_comp, uid]); 
+  const [sol, setSol] = useState("");
+    useEffect(() => {
+      if (!loading_comp)
+        startLevel(uid, getLevel()).then((res) => {
+          setSol(res);
+        });
+    }, [, loading_comp]);
 
   const [currentPage, setCurrentPage] = useState(0);
   const [moves, setMoves] = useState([0]);
@@ -271,7 +273,7 @@ function Level14({ uid, loading_comp }) {
                     key={el} 
                     className="list"
                     onClick={() => {
-                      if (el === parseInt(process.env.REACT_APP_LEVEL_14, 10)) {
+                      if (el === parseInt(sol, 10)) {
                         setCorect(true);
                       } else if (nodes[el] === undefined) {
                         setMoves((oldMoves) => [...oldMoves, el]);

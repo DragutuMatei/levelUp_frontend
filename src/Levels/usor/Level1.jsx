@@ -56,12 +56,10 @@ function Level1({ uid, loading_comp }) {
     );
   });
 
-  const click = (element) => {
-    console.log(element.name === sol);
-    console.log(element.name, sol);
+  const click = (element) => { 
     if (
-      element.name === sol
-      // && element.marime === process.env.REACT_APP_LEVEL_1_V2
+      element.name === sol.split("~")[0]
+      && element.marime === sol.split("~")[1]
     ) {
       updateLevel(uid, 2, "usor");
       alert("e ok");

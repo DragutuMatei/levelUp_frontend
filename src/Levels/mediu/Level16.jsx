@@ -534,9 +534,15 @@ const Level16 = ({ uid, loading_comp }) => {
       setMessage("");
     }
   };
-
+  const [sol, setSol] = useState("");
+  useEffect(() => {
+    if (!loading_comp)
+      startLevel(uid, getLevel()).then((res) => {
+        setSol(res);
+      });
+  }, [, loading_comp]);
   const handleCheckSolution = () => {
-    if (inputValue.toLowerCase().trim() === process.env.REACT_APP_LEVEL_16) {
+    if (inputValue.toLowerCase().trim() === sol) {
       updateLevel(uid, 17, "mediu");
       alert("e ok");
       to("/level17");
@@ -544,12 +550,6 @@ const Level16 = ({ uid, loading_comp }) => {
       alert("nu e ok");
     }
   };
-
-  useEffect(() => {
-    if (!loading_comp) {
-      startLevel(uid, getLevel());
-    }
-  }, [, loading_comp]);
 
   const hint = async (uid, level) => {
     await getHint(uid, level).then((res) => {

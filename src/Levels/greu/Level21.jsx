@@ -138,8 +138,15 @@ function generateTechShoppingList(count) {
 function Level21({ uid, loading_comp }) {
   const [items, setItems] = useState(generateTechShoppingList(2500));
   const [val, setVal] = useState("");
+  const [sol, setSol] = useState("");
+  useEffect(() => {
+    if (!loading_comp)
+      startLevel(uid, getLevel()).then((res) => {
+        setSol(res);
+      });
+  }, [, loading_comp]);
   const check = () => {
-    if (val.trim().toLowerCase() === process.env.REACT_APP_LEVEL_21) {
+    if (val.trim().toLowerCase() === sol) {
       updateLevel(uid, 22, "greu");
       alert("e ok");
       to("/level22");
@@ -157,12 +164,6 @@ function Level21({ uid, loading_comp }) {
     });
   };
 
-  useEffect(() => {
-    if (!loading_comp) {
-      startLevel(uid, getLevel());
-    }
-  }, [, loading_comp]);
-
   return (
     <div className="level">
       {!loading_comp ? (
@@ -177,7 +178,7 @@ function Level21({ uid, loading_comp }) {
           <div className="submit">
             <input
               type="text"
-              style={{width:"400px"}}
+              style={{ width: "400px" }}
               placeholder="Răspunsul tău..."
               onChange={(e) => setVal(e.target.value)}
             />

@@ -6,11 +6,15 @@ import Poveste from "../../Pages/Poveste";
 
 function Level23({ uid, loading_comp }) {
   const [text, setText] = useState("");
+  const [sol, setSol] = useState("");
+  useEffect(() => {
+    if (!loading_comp)
+      startLevel(uid, getLevel()).then((res) => {
+        setSol(res);
+      });
+  }, [, loading_comp]);
   const check = () => {
-    if (
-      text.trim() === "Botosani();" ||
-      text.trim() === process.env.REACT_APP_LEVEL_23
-    ) {
+    if (text.trim() === "Botosani();" || text.trim() === sol) {
       updateLevel(uid, 24, "greu");
       alert("e ok");
       to("/level24");
@@ -18,11 +22,6 @@ function Level23({ uid, loading_comp }) {
       alert("nu e ok!");
     }
   };
-  useEffect(() => {
-    if (!loading_comp) {
-      startLevel(uid, getLevel());
-    }
-  }, [, loading_comp]);
   console.log(
     "codul final este combinatia tuturor rezultatelor + | (ex. encodarea1|encodarea2....)"
   );
