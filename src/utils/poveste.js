@@ -45,7 +45,7 @@ export const povesti = [
     `Mărește imaginea pentru a găsi reminderul ascuns.`,
   ],
   [
-    `Textul ascuns a ieșit la lumină: „nu uita sa vorbesti cu gava!”. Era enigmatic. Dar, găsit pe laptopul lui Matei, sugera o acțiune neterminată. Să finalizeze ce? Indiciul, coroborat cu un fragment din apelul lui Matei, a cristalizat un nou nume în mintea lui Hanga: Gava. L-a căutat imediat. L-a găsit într-un colț retras al facultății, nu singur, ci cu Alex. Vorbeau în șoaptă. La apropierea lui Mihail, conversația a înghețat. Gava a aruncat o privire furișă și s-a evaporat, lăsându-l în urmă pe Alex, vizibil stânjenit. Fuga lui Gava striga vinovăție. Ce secret împărțeau? Mihail l-a presat pe Alex, dar a primit doar răspunsuri evazive, murmure despre un „laborator” complex. Alex ascundea ceva, era clar. Iar Mihail a avut o nouă intuiție: poate răspunsurile erau chiar în acel laborator.
+    `Textul ascuns a ieșit la lumină: „nu uita sa vorbesti cu gava!”. Era enigmatic. Dar, găsit pe laptopul lui Matei, sugera o acțiune neterminată. Să finalizeze ce? Indiciul, coroborat cu un fragment din apelul lui Matei, a cristalizat o nouă misiune în mintea lui Mihail: să vorbească cu Gava. L-a căutat imediat. L-a găsit într-un colț retras al facultății, nu singur, ci cu Alex. Vorbeau în șoaptă. La apropierea lui Mihail, conversația a înghețat. Gava a aruncat o privire furișă și s-a evaporat, lăsându-l în urmă pe Alex, vizibil stânjenit. Fuga lui Gava striga vinovăție. Ce secret împărțeau? Mihail l-a presat pe Alex, dar a primit doar răspunsuri evazive, murmure despre un „laborator” complex. Alex ascundea ceva, era clar. Iar Mihail a avut o nouă intuiție: poate răspunsurile erau chiar în acel laborator.
 `,
     `Ajută-l pe Alex cu laboratorul său complex pentru a-i câștiga încrederea și informațiile.`,
   ],
@@ -109,3 +109,5 @@ export const povesti = [
     `Găsește credențialele de logare ascunse în datele de rețea ale browser-ului.`,
   ],
 ];
+
+
