@@ -1,0 +1,15 @@
+.iconite {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 50px;
+  .inconita {
+    cursor: pointer;
+    svg,
+    img {
+      width: 150px;
+      height: auto;
+    }
+  }
+}

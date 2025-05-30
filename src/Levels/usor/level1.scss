@@ -1,0 +1,21 @@
+.elemente{
+    margin-top: 40px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    cursor: pointer;
+    
+    .element{
+        width: 200px;
+        border-bottom: 20px;
+        font-size: 15px;
+        svg{
+            width: 170px;
+            height: auto;
+        }
+    }
+}

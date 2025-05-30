@@ -1,0 +1,176 @@
+USOR:
+ - aia cu foldere multe
+ - Cod Qr glich uit care sa duca la urm nivel cu un cod pt mai tarziu (anti ss)
+ - Decode in codul sursa
+ - buline cu culori random si cu litere/cifre f asemanatoare ca si culoare
+ - find the person in a picture
+ - 
+
+
+ de vb cu ulmeanu pentru brelocuri 
+
+
+Poveste si logica:
+    Andrei a furat din fondul asociatiei x bani si seara cand a ajuns Hanga la camin a descoperit furtul. Crezand ca a numarat gresit banii 
+    initial a vrut sa intre in ss unde tinea evidenta, dar a descoperit ca in folderul cu fisierul se aflau foarte multe fisiere 
+    
+    ===============================USOR====================================
+
+    Task 1:
+        Ajuta l pe hanga sa gaseasca fisierul bun. (foarte multe iconite de fisier ci nume si extensie, in stanga vor fi filtre de extensii, etc si doar unul e bun. )
+    
+    Cand a gasit fisierul bun a descoperit ca este corupt, asa ca a incercat sa il rezolve. 
+    
+    Task 2:
+        (vor primi link cu un ss) Prin rezolvarea lui vor afla un cod 
+    
+    Dupa ce l-a rezolvat a descoperit ca intradevar lipsesc x lei. A vrut sa intrebe pe grupul de board daca stie cineva despre asta, insa dupa ce a trimis mesajul,
+    a observat ca i s a umblat la encodarea mesajelor si orice mesaj primit este de necitit.
+
+    Task 3:
+        Decodarea conversatiei cu cifrul caesar pentru a afla care e numele persoanei cu care trebuie sa ia legatura.
+
+    S-a dus sa vorbeasca cu teodor care a spus ca atunci cand venea de la facultate azi a vazut pe cineva fugind din camin si i a cazut un tag nfc.
+    Odata scanat, s a downloadat un cod qr, dar care e stricat. De curiozitate, Hanga impreuna cu Teodor incearca sa il faca functional.
+    
+    Task 4:
+        Refacerea unui cod qr. pana cand merge sa fie scanat. (controlele efectelor sa depinda unele de altele)
+
+    Odata scanat codul qr a descarcat un nou fisier cu un text foarte lung care trebuie descifrat.
+
+    Task 5:
+        Decodarea mesajului => sa descopere un link + combinatia corecta de parametrii pentru Task 11
+    
+    Odata ce mesajul a fost decodat si au fost dusi catre o pagina web....se afla in ipostaza ta....oare ce trebuie sa faca?
+
+    Task 6:
+        pagina goala cu divuri retarde :) - exterm de multe divuri nested cu stilinguri diferite si din cateva vor trb sa alctuiasca un cod 
+    
+    Dupa ce au gasit indiciul, hanga l-a sunat pe Buzatu. Fiind la munte nu a avut semnal prea bun si nu a inteles nimic din ce a zis. Norocul
+    lui e ca au inregistrat apelul. Trebuie sa reconstituiti audioul.
+
+    Task 7:
+        Reconstituire audio
+    
+    Cum acum Hanga il banuieste pe Matei, i-a cautat laptopul sa vada daca geseste ceva si cum stie ca el nu isi sterge niciodata sessionStorage din calculator a decis sa se uite acolo.
+    Problema e ca are mai mai multe browsere si nu stie pe care sa se uite.
+
+    Task 8:
+        Sa aleaga cate un browser si sa intre in sessionStorage ca sa afle detalii. 
+        
+    Dupa ce a descifrat codul din sessionStorage a realizat ca nu Matei a furat banii. Insa, ca sa afle mai multe indicii a decis sa caute prin fisierele lui, dar Matei
+    are o protectie speciala si anume, la fiecare 15 secunde, toate fisierele se rearanjeaza random. Dupa ce a stat putin sa le observe, Hanga a observat o poza ciudata...o poza cu mult text.
+
+    Task 9:
+        Sa caute si sa apase pe poza respectiva.
+
+    O data apasata, poza s-a deschis si hanga a inceput sa o inspecteze Foarte atent....
+    Task 10:
+        Sa dea zoom f mult si sa caute reminderul. 
+    
+    ===============================MEDIU====================================
+    
+    Hanga a gasit reminderul "nu uita sa vb cu Gava" si acum il banuieste. Asa ca s-a dus sa vorbeasca cu Gava ca sa afle mai multe. ei 2 s-au vazut 
+    la facultate fix cand Gava vobea cu Alex iar cand s-a apropriat a observat ca deodata acestia au tacut, iar Gava a plecat repede. ....
+
+    Task 11:
+        Sa rezolve un laborator a lui alex. - sa gaseasca parametrii corecti - 
+
+    Dupa ce a rezolvat laboratorul, Alex i-a spus ca Gava a vazut-o pe Lexi in fata caminului gandindu se cu voce tare, doar ca nu si aduce aminte exact ce a zis.. "parca ceva cu .com deci posibil un site"
+    In drum spre camin, hanga este sunat si chemat de urgent in decanat de catre Dragos, unde acesta il roaga sa descifreze un mesaj ciudat primit pe pagina facultatii.
+
+    Task 12:
+        Decrypt la codul unui svg => mai multe coduri ascunse (un user si parola pe care le vor folosi la task 17), doar unul e bun - coordonate random dar transcrise in ASCII dau un cod -
+    
+    Dupa ce a aflat codul secret, Hanga s-a dus la Lexi sa o intrebe despre ce zice Alex. Aceasta reconscut ca se gandea la un site auzit dintr-o discutie dintre Gio si Paraschiv.
+
+    Task 13:
+        Sa afle siteul la care se gandea Lexi pe ideea de spanzuratoarea (cuvantul de reseteaza la fiecare 60 de sec)
+    
+    Dupa ce au intrat pe site au fost redirectionati pe sitemap unde trebuie sa verifice paginile pentru a afla orice detalii.
+
+    Task 14:
+        Sa navigheze prin sitemap si sa gaseasca link ul ok, sunt mai multe, linkul corect descarca un fisier txt cu ceva text si codul de introdus
+    
+    Odata dowloadat fisierul, Hanga si Lexi descopera mult text format din []()+! si isi propun sa descopere despre ce e vb
+    
+    Task 15:
+        Decodeaza jsfuck care o sa fie un api call care rulat si e ok alert("e ok, ai primit un cadou pe care il gasesti cautand prin aceasta pagina"). 
+        Trb sa se uite in network tab si sa decodeze codul de la o imagine in base64 care dezvaluie o fraza in codul binar. Odata cu primirea rasp din api,
+        va aparea o caseta unde sa scrie fraza din codul binar. => "totul este in background"
+
+    Niciunul nu intelege raspunsul asa ca o intreaba pe Gio de unde stie de site. Aceasta le raspunde ca e vorba de un site la care a lucrat pentru un proiect la facultate
+    si ca in culorile din backgroundul ei de pe laptop are ascunse diferite texte. Curiosi, Hanga si Lexi decid sa testeze.
+
+    Task 16:
+        Afla codul din culorile de pe fundaul lui Gio. - ca fundal o sa fie multe patrate de html+css cu culori diferite si peste acestea un png cu iconite de pe un desktop 
+        ca si cum ar fi toata o poza. fiecare patrat are proprietatea de rgba iar la "a" o sa fie o bucata dintr-un cod final- 
+    
+    Dupa ce au aflat codul, Gio le a explicat ca el reprezinta ce a auzit de la niste voluntari la CADathon cand incerca sa doarma. Aceasta informatie i-a starnit curiozitatea
+    lui hanga care a decis sa contacteze toti voluntarii de la CADathon, doar ca incercand i-a expirat sesiunea contului de google si nu mai are parola de la cont asa ca trebuie sa si-o aminteasca.
+
+    Task 17
+        Folosirea datelor de logare de la task 12 
+
+    Cautand in contacte, ceva ii pare ciudat...numele si prenumele sunt amestecate intre ele nu mai intelege nimic asa ca trebuie sa le aranjeze
+    
+    Task 18:
+        O poza deasupra careia vor aparea timp de 5 secunde numele a 10 oameni (volunari de la cadathon care au la insta/fb poze cu ei) si userii vor trb sa apese pe fetele persoanelor sau totul se reseteaza
+    
+    Cu toate contactele ordonate, a trimis mesaj la 10 voluntari pe care ii banuieste ca ar putea stii despre ce e vb. Doar unul din ei i-a raspuns cu faptul ca nu poate
+    zice mai multe detalii, dar i a trimis o poza de la CADathon cu el, Andrei si Raducu in care discutau. Cum dupa CADathon, Hanga era foarte obosit a uitat discutia asa 
+    ca l-a intrebat pe Raducu despre ce era vorba, insa acesta era prea ocupat sa si repare laptopul. Aparent luase un virus care nu-l lasa sa inchida o fereastra de chrome
+    plina de linkuri pana nu apasa pe toate linkurile safe si tot nu reusea, asa ca Hanga s-a oferit sa-l ajute.
+
+    Task 19:
+        Apasa doar pe linkurile corecte (diferentiate prin culori si text) care si schimba pozitia la fiecare 2 secunde. Daca se apasa pe unul gresit se reincepe. Daca se 
+        apasa pe unul corect, dispare pana nu mai ramane nici unul.
+
+    Dupa ce a scapat de virus, i-a zis ca era vorba de o posibila decontare pentru imprimanta pe care o stricase printand prea multe brelocuri pentru Photocontest. Si cum nu 
+    a vrut sa dea mai multe detalii despre discutie, l-a convins ca inca nu a scapat de virus si a continuat sa i umble pe laptop pana a dat de un pdf interesant...
+
+    Task 20:
+        o pagina web intr-o singura culoare care sa aiba un patrat mare pe mijloc care se poate muta cu drag & drop. Sub el se ascunde un text dublu encryptat: morse si binar de aceeasi culoare cu backgroundul. 
+        Trebuie sa fie decryptat si sa se afle mesajul secret ("x lei pentru imprimanta").
+
+    =========================================================================GREU=========================================================================
+
+    Fiind sigur ca raducu a luat banii, a continuat sa caute prin calculatorul lui Raducu. Acolo a gasit o lista imensa de cumparaturi dar la prima vedere nu a vz nimic legat de reparatia imprimantei...
+    
+    Task 21:
+        O lista de cateva mii de iteme de cumparat in care trebuie gasit ceva lega de imprimante si andrei. La fiecare 8 minute lista se rerandomizeaza.
+        Dupa alegearea corecta, a fost downloadata o arhiva compresata de 5 ori, de fiecare data sub alta forma, si dupa ce s-a descoperit fisierul bun, se va descoperit codul final "Nu uita sa vb din nou cu andrei" 
+
+   Banuind ca are dreptate Hanga il convinge sa i verifice telefonul si incepe sa se uite in galerie unde vede mai multe foldere cu poze negre cu puncte si  linii pe ele.
+
+    Task 22:
+        Afla codul (o sa fie amestecat sub diferite forme in codul morse "codul este" in mai multe dosare -linkuri- si ultimul, care nu apare pe ecran, dar exista da catre pozele care fac codul "Andrei trebuie sa mi dea banii!" )
+
+    Uimit de ce a gasit, Hanga decide sa se duca la Andrei sa vorbeasca despre ce a gasit la Raducu, dar nu l-a gasit in camera. Dorind sa 
+    afle cat mai repde cine a luat banii a vrut sa intre pe calculatorul lui Diaconu. Dupa ce a incercat sa ghiceasca parola  de 2 ori si a adus aminte ca
+    Andrei si-a encodat parola, dar a gasit in conversatia cu el mai multe functii de encodare si nu mai tine minte care este cea corecta
+    
+    Task 23:
+        Descopera care encriptare e cea corecta si introdu parola
+
+    Dupa ce a intrat pe laptop, a observat ca desktopul lui Andrei are un singur fisier, si anume o imagine. Hanga decide sa afle mai multe
+    despre imaginea asta si decide sa inspecteze encodarea, metadata, etc imaginii
+
+    Task 24:
+        in metadata imaginii se va afla un hint "decodeaza imaginea folosind stepic". din decodarea ei o sa reiasa un fisier .stl care importat intr un soft cad
+        dezvalui o placuta cu un cod encript (nu stiu inca cu ce:)) care este defapt programul lui Hanga din ziua in care a descoperit ca s-au furat banii.
+    
+    Dupa ce afla asta deschide un browser si in history vede un site de piese pentru imprimante dar nu gaseste nimic in cos, asa ca trb sa caute credentialele de logare prin browser
+
+    Task 25:
+        Credentialele se afla in fereastra de network sub forma de tipuri de custom headere
+
+    Suma din comanda este exact cea care lipseste -> sfarsit, Andrei e prins si violat :)
+
+
+
+
+
+   
+   
+   

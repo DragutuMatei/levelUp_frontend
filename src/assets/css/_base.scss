@@ -1,0 +1,47 @@
+@import url(https://db.onlinewebfonts.com/c/ec473224614867b10bc5bd38ff354b97?family=Truetypewriter+PolyglOTT);
+
+$font_text: "Georgia", serif;
+$font_titlu: "Truetypewriter PolyglOTT";
+$rosu_f_deschis: #ae0b0b;
+$rosu_deschis: #881212;
+$rosu_inchis: #350606;
+$background_gradient: linear-gradient(to bottom, $rosu_deschis, $rosu_inchis);
+$white: rgb(223, 223, 223);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+  text-transform: none;
+}
+
+html,
+body {
+  width: 100lvw;
+  min-height: 100lvh;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font_titlu;
+}
+
+p,
+input,
+select,
+textarea a {
+  font-family: $font_text;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  text-decoration: none;
+}
