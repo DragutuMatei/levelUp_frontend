@@ -10,10 +10,7 @@ const startLevel = async (uid, level) => {
   const data = await fetch(`/.netlify/functions/getAnswer?level=${level}`)
     .then((res) => res.json())
     .then((res) => {
-      console.log("res");
-      console.log(typeof res.body);
-      console.log(res);
-      return res;
+      return res.answer;
     });
   return data;
 };

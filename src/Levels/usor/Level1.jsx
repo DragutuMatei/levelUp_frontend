@@ -8,10 +8,10 @@ import Poveste from "../../Pages/Poveste.jsx";
 function Level1({ uid, loading_comp }) {
   const [sol, setSol] = useState("");
   useEffect(() => {
-    if (!loading_comp) startLevel(uid, getLevel()).then(res => {
-      console.log(res);
-      
-    });
+    if (!loading_comp)
+      startLevel(uid, getLevel()).then((res) => {
+        setSol(res);
+      });
   }, [, loading_comp]);
 
   const shuffleArray = (array) => {
@@ -58,8 +58,8 @@ function Level1({ uid, loading_comp }) {
 
   const click = (element) => {
     if (
-      element.name === process.env.REACT_APP_LEVEL_1_V1 &&
-      element.marime === process.env.REACT_APP_LEVEL_1_V2
+      element.name === sol
+      // && element.marime === process.env.REACT_APP_LEVEL_1_V2
     ) {
       updateLevel(uid, 2, "usor");
       alert("e ok");
@@ -79,7 +79,7 @@ function Level1({ uid, loading_comp }) {
       } else {
         alert(res.data.message);
       }
-    });   
+    });
   };
 
   return (
