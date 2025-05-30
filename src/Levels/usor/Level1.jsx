@@ -68,13 +68,20 @@ function Level1({ uid, loading_comp }) {
   };
 
   const hint = async (uid, level) => {
-    await getHint(uid, level).then((res) => {
-      if (res.data.ok) {
-        alert(res.data.hint);
-      } else {
-        alert(res.data.message);
-      }
-    });
+    // await getHint(uid, level).then((res) => {
+    //   if (res.data.ok) {
+    //     alert(res.data.hint);
+    //   } else {
+    //     alert(res.data.message);
+    //   }
+    // });
+
+    fetch(`/.netlify/functions/getAnswer?level=1`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Răspuns corect:", data);
+      })
+      .catch((err) => console.error(err));
   };
 
   return (
