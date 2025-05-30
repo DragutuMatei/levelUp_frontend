@@ -174,14 +174,16 @@ const Level4 = ({ uid, loading_comp }) => {
   const { user, loading } = useAuth();
 
   const next = () => {
-    updateLevel(user.qr_scanned, uid, getLevel() + 1, "usor").then((res) => {
-      if (res.data.ok) {
-        alert(res.data.message);
-        to(`/level${getLevel() + 1}`);
-      } else {
-        alert("Nu ai scanat codul QR!");
+    updateLevel(`${user.qr_scanned}`, uid, getLevel() + 1, "usor").then(
+      (res) => {
+        if (res.data.ok) {
+          alert(res.data.message);
+          to(`/level${getLevel() + 1}`);
+        } else {
+          alert("Nu ai scanat codul QR!");
+        }
       }
-    });
+    );
   };
   const hint = async (uid, level) => {
     await getHint(uid, level).then((res) => {
