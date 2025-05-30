@@ -1,10 +1,11 @@
 // netlify/functions/getAnswer.js
 exports.handler = async function (event, context) {
   const level = event.queryStringParameters.level;
-  // Obținem răspunsul corect din variabila de mediu corespunzătoare
-  const answer = process.env[`LEVEL_${level}`] || null;
+  console.log(level)
+  const answer = process.env[`LEVEL_${level}`] || "asd";
+  console.log(answer)
   return {
     statusCode: 200,
-    body: "answer",
+    body: answer,
   };
 };
