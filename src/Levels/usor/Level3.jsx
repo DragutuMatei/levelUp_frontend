@@ -20,7 +20,11 @@ function Level3({ uid, loading_comp }) {
       }
     });
   };
-
+  useEffect(() => {
+    if (!loading_comp) {
+      startLevel(uid, getLevel());
+    }
+  }, [, loading_comp]);
   const hint = async (uid, level) => {
     await getHint(uid, level).then((res) => {
       if (res.data.ok) {
