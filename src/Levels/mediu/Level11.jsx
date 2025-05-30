@@ -53,8 +53,8 @@ function Level11({ uid, loading_comp }) {
     if (!loading_comp)
       startLevel(uid, getLevel()).then((res) => {
         setSol(res);
-        generateVal(res);
-        generateVal1(res);
+        generateVal(res.split("~")[0]);
+        generateVal1(res.split("~")[1]);
       });
   }, [, loading_comp]);
 
