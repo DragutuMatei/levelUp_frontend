@@ -23,7 +23,11 @@ function Level10({ uid, loading_comp }) {
   };
   const hint = async (uid, level) => {
     await getHint(uid, level).then((res) => {
-       
+       if (res.data.ok) {
+        alert(res.data.hint);
+      } else {
+        alert(res.data.message);
+      }
     });
   };
 
