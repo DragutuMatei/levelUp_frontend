@@ -18,7 +18,7 @@ function Level15({ uid, loading_comp }) {
       //   }
       // });
       const func = new Function(code); // creates a function from the input
-        func(); // execute it
+      func(); // execute it
       setSee(true);
     } catch (error) {
       alert("Error: " + error.message);
@@ -143,24 +143,22 @@ function Level15({ uid, loading_comp }) {
 
   const [val, setVal] = useState();
 
-  const [sol, setSol] = useState("");
-    useEffect(() => {
-      if (!loading_comp)
-        startLevel(uid, getLevel()).then((res) => {
-          setSol(res);
-        });
-    }, [, loading_comp]);
-
+  useEffect(() => {
+    if (!loading_comp) startLevel(uid, getLevel());
+  }, [, loading_comp]);
 
   const check = () => {
-    if (val.trim().toLowerCase() === sol) {
-      updateLevel(uid, 16, "mediu");
-      alert("e ok");
-      to("/level16");
-    } else {
-      setSee(false);
-      alert("e gresit");
-    }
+    updateLevel(val.trim().toLowerCase(), uid, getLevel() + 1, "mediu").then(
+      (res) => {
+        if (res.data.ok) {
+          alert(res.data.message);
+          to(`/level${getLevel() + 1}`);
+        } else {
+          setSee(false);
+          alert(res.data.message);
+        }
+      }
+    );
   };
   const [see, setSee] = useState(false);
 
@@ -173,7 +171,6 @@ function Level15({ uid, loading_comp }) {
       }
     });
   };
- 
 
   return (
     <div className="level">

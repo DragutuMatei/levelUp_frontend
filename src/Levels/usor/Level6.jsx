@@ -7,8 +7,8 @@ import Poveste from "../../Pages/Poveste";
 function Level6({ uid, loading_comp }) {
   const inputRef = useRef();
   const [img, setImg] = useState("");
-const [sol, setSol] = useState("");
-  
+  const [sol, setSol] = useState("");
+
   useEffect(() => {
     if (!loading_comp)
       startLevel(uid, getLevel()).then((res) => {
@@ -20,9 +20,7 @@ const [sol, setSol] = useState("");
     const value1 = inputRef.current.value;
     if (value1 === "rezolvare") {
       alert("Doar nu credeai ca iti dau rezolvarea? :))");
-    } else if (
-      value1 === "pasul urmator"  
-    ) { 
+    } else if (value1 === "pasul urmator") {
       alert(`
       Trebuie sa mai cauti un div care are trebuie apasat!!
       \n
@@ -31,12 +29,20 @@ const [sol, setSol] = useState("");
       setTimeout(() => {
         setImg(value1);
       }, 100);
-    } else if (value1.trim().toLowerCase() == sol) {
-      updateLevel(uid, 7, "usor");
-      alert("e ok");
-      to("/level7");
     } else {
-      alert("nu e ok!");
+      updateLevel(
+        value1.trim().toLowerCase(),
+        uid,
+        getLevel() + 1,
+        "usor"
+      ).then((res) => {
+        if (res.data.ok) {
+          alert(res.data.message);
+          to(`/level${getLevel() + 1}`);
+        } else {
+          alert(res.data.message);
+        }
+      });
     }
 
     inputRef.current.value = "";

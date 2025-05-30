@@ -108,7 +108,7 @@
 //               </button>
 //             </div>
 //           ) : (
-//             
+//
 //             <ul>
 //               {randomizeArray(nodes[currentPage]).map((el, index) => {
 //                 return (
@@ -169,24 +169,34 @@ function Level14({ uid, loading_comp }) {
         }
       }
     }
-  }, []); 
+  }, []);
   const next = useCallback(() => {
-    updateLevel(uid, 15, "mediu");
-    alert("e ok");
-    to("/level15");
-  }, [uid]); 
+    alert("e ok!");
+    to(`/level${getLevel() + 1}`);
+  }, [uid]);
+
+  const clickcheck = (el) => {
+    updateLevel(parseInt(el), uid, getLevel() + 1, "mediu").then((res) => {
+      if (res.data.ok) {
+        setCorect(true);
+      } else if (nodes[el] === undefined) {
+        setMoves((oldMoves) => [...oldMoves, el]);
+        setGresit(true);
+      } else {
+        setCurrentPage(el);
+        setMoves((oldMoves) => [...oldMoves, el]);
+      }
+    });
+  };
+
   useEffect(() => {
     for (let i = 0; i < 6; i++) {
       generateNodes();
     }
-  }, [generateNodes]); 
-  const [sol, setSol] = useState("");
-    useEffect(() => {
-      if (!loading_comp)
-        startLevel(uid, getLevel()).then((res) => {
-          setSol(res);
-        });
-    }, [, loading_comp]);
+  }, [generateNodes]);
+  useEffect(() => {
+    if (!loading_comp) startLevel(uid, getLevel());
+  }, [, loading_comp]);
 
   const [currentPage, setCurrentPage] = useState(0);
   const [moves, setMoves] = useState([0]);
@@ -197,22 +207,19 @@ function Level14({ uid, loading_comp }) {
     return [...arr].sort(() => Math.random() - 0.5);
   }, []);
 
-  const hint = useCallback(
-    async (currentUid, currentLevel) => {
-      try {
-        const res = await getHint(currentUid, currentLevel);
-        if (res.data.ok) {
-          alert(res.data.hint);
-        } else {
-          alert(res.data.message);
-        }
-      } catch (error) {
-        console.error("Error fetching hint:", error);
-        alert("An error occurred while fetching the hint.");
+  const hint = useCallback(async (currentUid, currentLevel) => {
+    try {
+      const res = await getHint(currentUid, currentLevel);
+      if (res.data.ok) {
+        alert(res.data.hint);
+      } else {
+        alert(res.data.message);
       }
-    },
-    [] 
-  );
+    } catch (error) {
+      console.error("Error fetching hint:", error);
+      alert("An error occurred while fetching the hint.");
+    }
+  }, []);
   const displayNodes = useMemo(() => {
     return nodes[currentPage] ? randomizeArray(nodes[currentPage]) : [];
   }, [currentPage, randomizeArray]);
@@ -269,28 +276,15 @@ function Level14({ uid, loading_comp }) {
             <ul>
               {displayNodes.map((el) => {
                 return (
-                  <li
-                    key={el} 
-                    className="list"
-                    onClick={() => {
-                      if (el === parseInt(sol, 10)) {
-                        setCorect(true);
-                      } else if (nodes[el] === undefined) {
-                        setMoves((oldMoves) => [...oldMoves, el]);
-                        setGresit(true);
-                      } else {
-                        setCurrentPage(el);
-                        setMoves((oldMoves) => [...oldMoves, el]);
-                      }
-                    }}
-                  >
+                  <li key={el} className="list" onClick={() => clickcheck(el)}>
                     {el}
                   </li>
                 );
               })}
-                  {/* // 0 /12 /192 /2888 /43321 /649825 /9747390 /146210857 */}
-                  <div dangerouslySetInnerHTML={{ __html: `<!-- cauta 146210857 -->` }}></div>
-
+              {/* // 0 /12 /192 /2888 /43321 /649825 /9747390 /146210857 */}
+              <div
+                dangerouslySetInnerHTML={{ __html: `<!-- cauta 146210857 -->` }}
+              ></div>
             </ul>
           )}
         </div>

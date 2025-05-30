@@ -38,23 +38,17 @@ function Level8({ uid, loading_comp }) {
   };
   const [val, setVal] = useState("");
 
-  const [sol, setSol] = useState("");
-    useEffect(() => {
-      if (!loading_comp)
-        startLevel(uid, getLevel()).then((res) => {
-          setSol(res);
-        });
-    }, [, loading_comp]);
-
   const check = () => {
-    if (val.trim().toLowerCase() == sol) {
-      updateLevel(uid, 9, "usor");
-      alert("e ok");
-      sessionStorage.clear();
-      to("/level9");
-    } else {
-      alert("nu e ok");
-    }
+    updateLevel(val.trim().toLowerCase(), uid, getLevel() + 1, "usor").then(
+      (res) => {
+        if (res.data.ok) {
+          alert(res.data.message);
+          to(`/level${getLevel() + 1}`);
+        } else {
+          alert(res.data.message);
+        }
+      }
+    );
   };
   const hint = async (uid, level) => {
     await getHint(uid, level).then((res) => {
@@ -65,7 +59,9 @@ function Level8({ uid, loading_comp }) {
       }
     });
   };
- 
+  useEffect(() => {
+    if (!loading_comp) startLevel(uid, getLevel());
+  }, [, loading_comp]);
   return (
     <div className="level">
       {!loading_comp ? (

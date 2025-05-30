@@ -14,19 +14,26 @@ function Level22({ loading_comp, uid }) {
   const [sol, setSol] = useState("");
     useEffect(() => {
       if (!loading_comp)
-        startLevel(uid, getLevel()).then((res) => {
-          setSol(res);
-        });
+        startLevel(uid, getLevel())
     }, [, loading_comp]);
+  
   const [text, setText] = useState("");
   const check = () => {
-    if (text.trim().toLowerCase() === sol) {
-      updateLevel(uid, 23, "greu");
-      alert("e ok");
-      to("/level23");
-    } else {
-      alert("nu e ok!");
-    }
+  
+     updateLevel(
+          text.trim().toLowerCase(),
+          uid,
+          getLevel() + 1,
+          "greu"
+        ).then((res) => {
+          if (res.data.ok) {
+            alert(res.data.message);
+            to(`/level${getLevel() + 1}`);
+          } else {
+            alert(res.data.message);
+          }
+        });
+
   };
 
   const [photoFolders, setphotoFolders] = useState([]);

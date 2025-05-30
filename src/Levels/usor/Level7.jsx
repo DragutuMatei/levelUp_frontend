@@ -11,26 +11,22 @@ const Level7 = ({ uid, loading_comp }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const fileInputRef = useRef(null);
   const [text, setText] = useState("");
-  const [sol, setSol] = useState("");
-    useEffect(() => {
-      if (!loading_comp)
-        startLevel(uid, getLevel()).then((res) => {
-          setSol(res);
-        });
-    }, [, loading_comp]);
-  
-  const check = () => {
-    if (text.toLowerCase().trim() === sol) {
-      updateLevel(uid, 8, "usor");
-      alert("e ok");
-      to("/level8");
-    } else {
-      alert("nu e ok");
-      setText("");
-    }
-  };
+  useEffect(() => {
+    if (!loading_comp) startLevel(uid, getLevel());
+  }, [, loading_comp]);
 
-  
+  const check = () => {
+    updateLevel(text.toLowerCase().trim(), uid, getLevel() + 1, "usor").then(
+      (res) => {
+        if (res.data.ok) {
+          alert(res.data.message);
+          to(`/level${getLevel() + 1}`);
+        } else {
+          alert(res.data.message);
+        }
+      }
+    );
+  };
 
   useEffect(() => {
     if (!localStorage.getItem("download")) {
@@ -41,7 +37,7 @@ const Level7 = ({ uid, loading_comp }) => {
       link.remove();
 
       localStorage.setItem("download", "true");
-    } 
+    }
   }, []);
   // Noduri audio
   const nodes = useRef({});

@@ -83,13 +83,16 @@ function Level19({ uid, loading_comp }) {
   }, []);
 
   const check = (link) => {
-    if (link === `${window.location.origin}/level20`) {
-      updateLevel(uid, 20, "mediu");
-      alert("e ok");
-      to("/level20");
-    } else {
-      setLinks((prev) => prev.filter((item) => item !== link));
-    }
+    updateLevel(link, uid, getLevel() + 1, "mediu").then(
+      (res) => {
+        if (res.data.ok) {
+          alert(res.data.message);
+          to(`/level${getLevel() + 1}`);
+        } else {
+          setLinks((prev) => prev.filter((item) => item !== link));
+        }
+      }
+    );
   };
   const hint = async (uid, level) => {
     await getHint(uid, level).then((res) => {

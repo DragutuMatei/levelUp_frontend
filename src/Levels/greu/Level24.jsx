@@ -7,24 +7,24 @@ import { Link } from "react-router-dom";
 
 function Level24({ uid, loading_comp }) {
   const [text, setText] = useState("");
-const [sol, setSol] = useState("");
+
   useEffect(() => {
-    if (!loading_comp)
-      startLevel(uid, getLevel()).then((res) => {
-        setSol(res);
-      });
+    if (!loading_comp) startLevel(uid, getLevel());
   }, [, loading_comp]);
   const check = () => {
-    if (
-      text.trim().toLowerCase() === sol.split("~")[0] ||
-      text.trim().toLowerCase() === sol.split("~")[1]
-    ) {
-      updateLevel(uid, 25, "greu");
-      alert("e ok");
-      to("/level25");
-    } else {
-      alert("nu e ok!");
-    }
+    updateLevel(
+      { rez1: text.trim().toLowerCase(), rez2: text.trim().toLowerCase() },
+      uid,
+      getLevel() + 1,
+      "greu"
+    ).then((res) => {
+      if (res.data.ok) {
+        alert(res.data.message);
+        to(`/level${getLevel() + 1}`);
+      } else {
+        alert(res.data.message);
+      }
+    });
   };
   const hint = async (uid, level) => {
     await getHint(uid, level).then((res) => {

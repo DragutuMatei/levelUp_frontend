@@ -10,12 +10,8 @@ function Level5({ uid, loading_comp }) {
   const read = (e) => {
     setTxt(fileReader.result);
   };
-const [sol, setSol] = useState("");
   useEffect(() => {
-    if (!loading_comp)
-      startLevel(uid, getLevel()).then((res) => {
-        setSol(res);
-      });
+    if (!loading_comp) startLevel(uid, getLevel());
   }, [, loading_comp]);
 
   const change = (file) => {
@@ -26,13 +22,16 @@ const [sol, setSol] = useState("");
 
   const [val, setVal] = useState("");
   const check = () => {
-    if (val.trim().toLowerCase() === sol) {
-      updateLevel(uid, 6, "usor");
-      alert("e ok");
-      to("/level6");
-    } else {
-      alert("nu e ok");
-    }
+    updateLevel(val.trim().toLowerCase(), uid, getLevel() + 1, "usor").then(
+      (res) => {
+        if (res.data.ok) {
+          alert(res.data.message);
+          to(`/level${getLevel() + 1}`);
+        } else {
+          alert(res.data.message);
+        }
+      }
+    );
   };
   const hint = async (uid, level) => {
     await getHint(uid, level).then((res) => {

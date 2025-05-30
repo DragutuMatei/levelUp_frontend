@@ -534,21 +534,25 @@ const Level16 = ({ uid, loading_comp }) => {
       setMessage("");
     }
   };
-  const [sol, setSol] = useState("");
+  
   useEffect(() => {
-    if (!loading_comp)
-      startLevel(uid, getLevel()).then((res) => {
-        setSol(res);
-      });
+    if (!loading_comp) startLevel(uid, getLevel());
   }, [, loading_comp]);
+  
   const handleCheckSolution = () => {
-    if (inputValue.toLowerCase().trim() === sol) {
-      updateLevel(uid, 17, "mediu");
-      alert("e ok");
-      to("/level17");
-    } else {
-      alert("nu e ok");
-    }
+    updateLevel(
+      inputValue.trim().toLowerCase(),
+      uid,
+      getLevel() + 1,
+      "mediu"
+    ).then((res) => {
+      if (res.data.ok) {
+        alert(res.data.message);
+        to(`/level${getLevel() + 1}`);
+      } else {
+        alert(res.data.message);
+      }
+    });
   };
 
   const hint = async (uid, level) => {

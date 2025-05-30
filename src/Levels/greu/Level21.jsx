@@ -138,21 +138,20 @@ function generateTechShoppingList(count) {
 function Level21({ uid, loading_comp }) {
   const [items, setItems] = useState(generateTechShoppingList(2500));
   const [val, setVal] = useState("");
-  const [sol, setSol] = useState("");
   useEffect(() => {
-    if (!loading_comp)
-      startLevel(uid, getLevel()).then((res) => {
-        setSol(res);
-      });
+    if (!loading_comp) startLevel(uid, getLevel());
   }, [, loading_comp]);
   const check = () => {
-    if (val.trim().toLowerCase() === sol) {
-      updateLevel(uid, 22, "greu");
-      alert("e ok");
-      to("/level22");
-    } else {
-      alert("nu e ok");
-    }
+    updateLevel(val.trim().toLowerCase(), uid, getLevel() + 1, "greu").then(
+      (res) => {
+        if (res.data.ok) {
+          alert(res.data.message);
+          to(`/level${getLevel() + 1}`);
+        } else {
+          alert(res.data.message);
+        }
+      }
+    );
   };
   const hint = async (uid, level) => {
     await getHint(uid, level).then((res) => {

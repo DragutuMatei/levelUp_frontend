@@ -6,25 +6,26 @@ import Poveste from "../../Pages/Poveste";
 
 function Level23({ uid, loading_comp }) {
   const [text, setText] = useState("");
-  const [sol, setSol] = useState("");
+
   useEffect(() => {
-    if (!loading_comp)
-      startLevel(uid, getLevel()).then((res) => {
-        setSol(res);
-      });
+    if (!loading_comp) startLevel(uid, getLevel());
   }, [, loading_comp]);
+
   const check = () => {
-    if (text.trim() === "Botosani();" || text.trim() === sol) {
-      updateLevel(uid, 24, "greu");
-      alert("e ok");
-      to("/level24");
-    } else {
-      alert("nu e ok!");
-    }
+    updateLevel(text.trim(), uid, getLevel() + 1, "greu").then((res) => {
+      if (res.data.ok) {
+        alert(res.data.message);
+        to(`/level${getLevel() + 1}`);
+      } else {
+        alert(res.data.message);
+      }
+    });
   };
+
   console.log(
     "codul final este combinatia tuturor rezultatelor + | (ex. encodarea1|encodarea2....)"
   );
+
   const hint = async (uid, level) => {
     await getHint(uid, level).then((res) => {
       if (res.data.ok) {

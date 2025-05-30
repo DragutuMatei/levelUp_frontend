@@ -13,19 +13,25 @@ function Level9({ uid, loading_comp }) {
   };
 
   const click = (casev) => {
-    if (casev) {
-      var link = document.createElement("a");
-      link.download = "name";
-      link.href = require("../../assets/img/amin.png");
-      link.click();
-      link.remove();
-      updateLevel(uid, 10, "usor");
-      alert("e ok");
-      to("/level10");
-    } else {
-      alert("nu e ok");
-      setDate(randomizeArray(date));
-    }
+    updateLevel(
+      `${casev}`.trim().toLowerCase(),
+      uid,
+      getLevel() + 1,
+      "usor"
+    ).then((res) => {
+      if (res.data.ok) {
+        var link = document.createElement("a");
+        link.download = "name";
+        link.href = require("../../assets/img/amin.png");
+        link.click();
+        link.remove();
+        alert(res.data.message);
+        to(`/level${getLevel() + 1}`);
+      } else {
+        alert(res.data.message);
+        setDate(randomizeArray(date));
+      }
+    });
   };
   const hint = async (uid, level) => {
     await getHint(uid, level).then((res) => {

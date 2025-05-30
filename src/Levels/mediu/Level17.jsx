@@ -6,25 +6,29 @@ import Poveste from "../../Pages/Poveste";
 function Level17({ uid, loading_comp }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-const [sol, setSol] = useState("");
+
   useEffect(() => {
     if (!loading_comp)
-      startLevel(uid, getLevel()).then((res) => {
-        setSol(res);
-      });
+      startLevel(uid, getLevel())
   }, [, loading_comp]);
 
   const check = () => {
-    if (
-      username.trim().toLowerCase() === sol.split("~")[0] &&
-      password.trim() === sol.split("~")[1]
-    ) {
-      updateLevel(uid, 18, "mediu");
-      alert("e ok");
-      to("/level18");
-    } else {
-      alert("e gresit");
-    }
+    updateLevel(
+      {
+        rez1: username.trim().toLowerCase(),
+        rez2: password.trim().toLowerCase(),
+      },
+      uid,
+      getLevel() + 1,
+      "mediu"
+    ).then((res) => {
+      if (res.data.ok) {
+        alert(res.data.message);
+        to(`/level${getLevel() + 1}`);
+      } else {
+        alert(res.data.message);
+      }
+    });
   };
 
   const hint = async (uid, level) => {

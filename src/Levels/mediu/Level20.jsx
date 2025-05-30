@@ -265,9 +265,17 @@ export default function Level20({ uid, loading_comp }) {
         setSelected(newSelected);
         if (newSelected.length === NUM_ITEMS) {
           setTimeout(() => {
-            updateLevel(uid, 21, "mediu");
-            alert("e ok");
-            to("/level21");
+             updateLevel(
+                  newSelected.length,
+                  uid,
+                  getLevel() + 1,
+                  "mediu"
+                ).then((res) => {
+                  if (res.data.ok) {
+                    alert(res.data.message);
+                    to(`/level${getLevel() + 1}`);
+                  }
+                });
           }, 200);
         }
       }

@@ -13,7 +13,7 @@ function Level11({ uid, loading_comp }) {
   const [generated, setg] = useState([]);
   const [generated1, setg1] = useState([]);
 
-  const generateVal = (solutie) => {
+  const generateVal = ( ) => {
     const cifre = [0, 1];
     let array = [];
     for (let i = 0; i < 20; i++) {
@@ -27,10 +27,10 @@ function Level11({ uid, loading_comp }) {
       );
     }
 
-    array[Math.floor(Math.random() * array.length)] = solutie;
+    array[Math.floor(Math.random() * array.length)] = "01010101001010101010";
     setg(array);
   };
-  const generateVal1 = (solutie) => {
+  const generateVal1 = ( ) => {
     const cifre = [1, 2, 3, 4];
     let array = [];
     for (let i = 0; i < 20; i++) {
@@ -44,7 +44,7 @@ function Level11({ uid, loading_comp }) {
       );
     }
     const index = Math.floor(Math.random() * array.length);
-    array[index] = solutie;
+    array[index] = "21234234";
     setg1(array);
   };
 
@@ -52,24 +52,25 @@ function Level11({ uid, loading_comp }) {
   useEffect(() => {
     if (!loading_comp)
       startLevel(uid, getLevel()).then((res) => {
-        setSol(res);
-        generateVal(res.split("~")[0]);
-        generateVal1(res.split("~")[1]);
+        generateVal( );
+        generateVal1( );
       });
   }, [, loading_comp]);
 
   const check = () => {
-    if (
-      value.trim() == sol.split("~")[0] &&
-      value1.trim() == sol.split("~")[1] &&
-      value2.trim() == sol.split("~")[2]
-    ) {
-      updateLevel(uid, 12, "mediu");
-      alert("e ok");
-      to("/level12");
-    } else {
-      alert("nu e ok");
-    }
+    updateLevel(
+      { rez1: value.trim(), rez2: value1.trim(), rez3: value2.trim() },
+      uid,
+      getLevel() + 1,
+      "mediu"
+    ).then((res) => {
+      if (res.data.ok) {
+        alert(res.data.message);
+        to(`/level${getLevel() + 1}`);
+      } else {
+        alert(res.data.message);
+      }
+    }); 
   };
   const hint = async (uid, level) => {
     await getHint(uid, level).then((res) => {

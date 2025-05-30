@@ -1117,8 +1117,13 @@ function Level18({ uid, loading_comp }) {
 
     if (corecte === 20) {
       showToastMessage("e ok");
-      updateLevel(uid, 19, "mediu");
-      to("/level19");
+      updateLevel(corecte, uid, getLevel() + 1, "mediu").then((res) => {
+        if (res.data.ok) {
+          to(`/level${getLevel() + 1}`);
+        }
+      });
+      // updateLevel(uid, 19, "mediu");
+      // to("/level19");
     }
 
     skip();

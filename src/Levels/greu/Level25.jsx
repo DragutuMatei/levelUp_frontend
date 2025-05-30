@@ -14,21 +14,20 @@ function Level25({ uid, loading_comp }) {
     getData();
   }, []);
   const [value, setValue] = useState(0);
-  const [sol, setSol] = useState("");
+
   useEffect(() => {
-    if (!loading_comp)
-      startLevel(uid, getLevel()).then((res) => {
-        setSol(res);
-      });
+    if (!loading_comp) startLevel(uid, getLevel());
   }, [, loading_comp]);
+
   const check = () => {
-    if (parseInt(value) === parseInt(sol)) {
-      updateLevel(uid, 25, "greu");
-      alert("e ok");
-      to("/alege");
-    } else {
-      alert("nu e ok");
-    }
+    updateLevel(value, uid, getLevel() + 1, "greu").then((res) => {
+      if (res.data.ok) {
+        alert(res.data.message);
+        to(`/alege`);
+      } else {
+        alert(res.data.message);
+      }
+    });
   };
   const hint = async (uid, level) => {
     await getHint(uid, level).then((res) => {

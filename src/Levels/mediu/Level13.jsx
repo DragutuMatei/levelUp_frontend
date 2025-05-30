@@ -116,10 +116,18 @@ export default function Level3({ uid, loading_comp }) {
       .every((char) => guessedLetters.includes(char) || char === ".");
     if (hasWon) {
       sessionStorage.setItem("site", word);
-      updateLevel(uid, 14, "mediu");
-      alert("e ok");
-      to("/level14");
-      // alert("e ok");
+
+      updateLevel(
+        "true",
+        uid,
+        getLevel() + 1,
+        "mediu"
+      ).then((res) => {
+        if (res.data.ok) {
+          alert(res.data.message);
+          to(`/level${getLevel() + 1}`);
+        } 
+      }); // alert("e ok");
       // navigate("/level14");
     } else if (triesLeft === 0) {
       setTimeout(resetGame, 2000);

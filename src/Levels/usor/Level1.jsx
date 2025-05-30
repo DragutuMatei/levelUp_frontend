@@ -57,23 +57,17 @@ function Level1({ uid, loading_comp }) {
   });
 
   const click = (element) => {
-    // if (
-    //   element.name === sol.split("~")[0]
-    //   && element.marime === sol.split("~")[1]
-    // ) {
-
     updateLevel(
       { rez1: element.name, rez2: element.marime },
       uid,
-      2,
+      getLevel() + 1,
       "usor"
     ).then((res) => {
-      if (res.ok) {
-        alert("e ok");
-        window.location = "/level2";
-        // to("/level2");
+      if (res.data.ok) {
+        alert(res.data.message);
+        to(`/level${getLevel()+1}`);
       } else {
-        alert("nu e ok");
+        alert(res.data.message);
         window.scrollTo(0, 0);
         setEngineeringPrograms(shuffleArray(engineeringPrograms));
       }

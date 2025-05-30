@@ -7,26 +7,23 @@ import "../../assets/css/style.scss";
 function Level2({ uid, loading_comp }) {
   const [value, setValue] = useState("");
 
-  const [sol, setSol] = useState("");
-    useEffect(() => {
-      if (!loading_comp)
-        startLevel(uid, getLevel()).then((res) => {
-          setSol(res);
-        });
-    }, [, loading_comp]);
+  useEffect(() => {
+    if (!loading_comp) startLevel(uid, getLevel());
+  }, [, loading_comp]);
   const evaluete = (val) => {
     const vall = val.trim().toLowerCase();
-    if (parseInt(sol) === 2000) {
-      updateLevel(uid, 3, "usor");
-      alert("e ok");
-      window.location = "/level3";
-    } else {
-      alert("nu e ok");
-      setValue("");
-    }
+
+    updateLevel(parseInt(vall), uid, getLevel() + 1, "usor").then((res) => {
+      if (res.data.ok) {
+        alert(res.data.message);
+        to(`/level${getLevel() + 1}`);
+      } else {
+        alert(res.data.message);
+        setValue("");
+      }
+    });
   };
 
-  
   const hint = async (uid, level) => {
     await getHint(uid, level).then((res) => {
       if (res.data.ok) {
