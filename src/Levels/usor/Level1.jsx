@@ -57,6 +57,8 @@ function Level1({ uid, loading_comp }) {
   });
 
   const click = (element) => {
+    console.log(element.name === sol);
+    console.log(element.name, sol);
     if (
       element.name === sol
       // && element.marime === process.env.REACT_APP_LEVEL_1_V2
