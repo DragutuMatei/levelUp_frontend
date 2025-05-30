@@ -6,12 +6,11 @@ import Poveste from "../../Pages/Poveste";
 function Level12({ uid, loading_comp }) {
   const [value, setValue] = useState("");
 
-  const [c, setc] = useState([
-  ]);
+  const [c, setc] = useState([]);
   useEffect(() => {
     if (!loading_comp)
       startLevel(uid, getLevel()).then((res) => {
-        setc(res.split("~"))
+        setc(res.split("~"));
       });
   }, [, loading_comp]);
   const check = () => {
@@ -23,7 +22,7 @@ function Level12({ uid, loading_comp }) {
       alert("nu e ok");
     }
   };
-  
+
   const hint = async (uid, level) => {
     await getHint(uid, level).then((res) => {
       if (res.data.ok) {

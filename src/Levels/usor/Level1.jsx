@@ -6,12 +6,12 @@ import { startLevel, getHint } from "../../utils/points.js";
 import Poveste from "../../Pages/Poveste.jsx";
 
 function Level1({ uid, loading_comp }) {
-  const [sol, setSol] = useState("");
+  // const [sol, setSol] = useState("");
   useEffect(() => {
-    if (!loading_comp)
-      startLevel(uid, getLevel()).then((res) => {
-        setSol(res);
-      });
+    if (!loading_comp) startLevel(uid, getLevel());
+    //   .then((res) => {
+    //   setSol(res);
+    // });
   }, [, loading_comp]);
 
   const shuffleArray = (array) => {
@@ -56,20 +56,28 @@ function Level1({ uid, loading_comp }) {
     );
   });
 
-  const click = (element) => { 
-    if (
-      element.name === sol.split("~")[0]
-      && element.marime === sol.split("~")[1]
-    ) {
-      updateLevel(uid, 2, "usor");
-      alert("e ok");
-      window.location = "/level2";
-      // to("/level2");
-    } else {
-      alert("nu e ok");
-      window.scrollTo(0, 0);
-      setEngineeringPrograms(shuffleArray(engineeringPrograms));
-    }
+  const click = (element) => {
+    // if (
+    //   element.name === sol.split("~")[0]
+    //   && element.marime === sol.split("~")[1]
+    // ) {
+
+    updateLevel(
+      { rez1: element.name, rez2: element.marime },
+      uid,
+      2,
+      "usor"
+    ).then((res) => {
+      if (res.ok) {
+        alert("e ok");
+        window.location = "/level2";
+        // to("/level2");
+      } else {
+        alert("nu e ok");
+        window.scrollTo(0, 0);
+        setEngineeringPrograms(shuffleArray(engineeringPrograms));
+      }
+    });
   };
 
   const hint = async (uid, level) => {

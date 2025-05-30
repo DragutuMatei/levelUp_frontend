@@ -9,8 +9,8 @@ export const getLevel = () => {
   );
 };
 
-export const updateLevel = async (uid, level, cat='greu') => {
-  return await AXIOS.post("/updateLevel", {uid,  level, level_hint:getLevel(), cat });
+export const updateLevel = async (resp, uid, level, cat='greu') => {
+  return await AXIOS.post("/updateLevel", {resp, uid,  level, level_hint:getLevel(), cat });
 };
 
 function generateSeed() {

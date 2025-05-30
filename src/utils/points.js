@@ -6,13 +6,13 @@ const getHint = async (uid, level) => {
 };
 
 const startLevel = async (uid, level) => {
-  await AXIOS.post("/startLevel", { uid, level });
-  const data = await fetch(`/.netlify/functions/getAnswer?level=${level}`)
-    .then((res) => res.json())
-    .then((res) => {
-      return res.answer;
-    });
-  return data;
+  return await AXIOS.post("/startLevel", { uid, level });
+  // const data = await fetch(`/.netlify/functions/getAnswer?level=${level}`)
+  //   .then((res) => res.json())
+  //   .then((res) => {
+  //     return res.key;
+  //   });
+  // return data;
 };
 
 const ghicit = async (uid, nume) => {
