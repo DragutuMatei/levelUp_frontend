@@ -16,7 +16,7 @@ function Level17({ uid, loading_comp }) {
     updateLevel(
       {
         rez1: username.trim().toLowerCase(),
-        rez2: password.trim().toLowerCase(),
+        rez2: password.trim(),
       },
       uid,
       getLevel() + 1,
