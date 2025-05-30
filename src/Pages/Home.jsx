@@ -45,7 +45,7 @@ function Home() {
               href="https://docs.google.com/document/d/1DgR-5dSoNMFG5MwgqcbMO-nWnfBOo1jVud3To8uJkkU/edit?usp=sharing"
               target="_blank"
             >
-              Regulament
+              <h1>Regulament</h1>
             </a>
           </button>
           <button
