@@ -4,14 +4,14 @@ import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDxvFfFyG0gMcH7zTjoTnJa8_jqUh5Q_mw",
-  authDomain: "levelup-aa698.firebaseapp.com",
-  projectId: "levelup-aa698",
-  storageBucket: "levelup-aa698.firebasestorage.app",
-  messagingSenderId: "344814257379",
-  appId: "1:344814257379:web:c4dbf66163fe22043ff1d6",
-  measurementId: "G-NN9YEMHVLH",
-  databaseURL: "https://levelup-aa698-default-rtdb.europe-west1.firebasedatabase.app",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
 };
 
 // Initialize Firebase
