@@ -6,9 +6,14 @@ import { startLevel, getHint } from "../../utils/points.js";
 import Poveste from "../../Pages/Poveste.jsx";
 
 function Level1({ uid, loading_comp }) {
+  const [sol, setSol] = useState("");
   useEffect(() => {
-    if (!loading_comp) startLevel(uid, getLevel());
+    if (!loading_comp) startLevel(uid, getLevel()).then(res => {
+      console.log(res);
+      
+    });
   }, [, loading_comp]);
+
   const shuffleArray = (array) => {
     const shuffled = array.slice();
     for (let i = shuffled.length - 1; i > 0; i--) {
@@ -68,20 +73,13 @@ function Level1({ uid, loading_comp }) {
   };
 
   const hint = async (uid, level) => {
-    // await getHint(uid, level).then((res) => {
-    //   if (res.data.ok) {
-    //     alert(res.data.hint);
-    //   } else {
-    //     alert(res.data.message);
-    //   }
-    // });
-
-    fetch(`/.netlify/functions/getAnswer?level=1`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Răspuns corect:", data);
-      })
-      .catch((err) => console.error(err));
+    await getHint(uid, level).then((res) => {
+      if (res.data.ok) {
+        alert(res.data.hint);
+      } else {
+        alert(res.data.message);
+      }
+    });   
   };
 
   return (
