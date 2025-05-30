@@ -6,9 +6,7 @@ const getHint = async (uid, level) => {
 
 const startLevel = async (uid, level) => {
   await AXIOS.post("/startLevel", { uid, level });
-  const data = await fetch(`/.netlify/functions/getAnswer?level=${level}`).then(
-    (res) => res.json()
-  );
+  const data = await fetch(`/.netlify/functions/getAnswer?level=${level}`);
   return data;
 };
 
