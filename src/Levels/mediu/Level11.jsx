@@ -10,19 +10,59 @@ function Level11({ uid, loading_comp }) {
   const [value1, setValue1] = useState("");
   const [value2, setValue2] = useState("");
 
+  const [generated, setg] = useState([]);
+  const [generated1, setg1] = useState([]);
+
+  const generateVal = (solutie) => {
+    const cifre = [0, 1];
+    let array = [];
+    for (let i = 0; i < 20; i++) {
+      array.push(
+        parseInt(
+          Array.from(
+            { length: 20 },
+            () => cifre[Math.floor(Math.random() * cifre.length)]
+          ).join("")
+        )
+      );
+    }
+
+    array[Math.floor(Math.random() * array.length)] = solutie;
+    setg(array);
+  };
+  const generateVal1 = (solutie) => {
+    const cifre = [1, 2, 3, 4];
+    let array = [];
+    for (let i = 0; i < 20; i++) {
+      array.push(
+        parseInt(
+          Array.from(
+            { length: 20 },
+            () => cifre[Math.floor(Math.random() * cifre.length)]
+          ).join("")
+        )
+      );
+    }
+    const index = Math.floor(Math.random() * array.length);
+    array[index] = solutie;
+    setg1(array);
+  };
+
   const [sol, setSol] = useState("");
-    useEffect(() => {
-      if (!loading_comp)
-        startLevel(uid, getLevel()).then((res) => {
-          setSol(res);
-        });
-    }, [, loading_comp]);
+  useEffect(() => {
+    if (!loading_comp)
+      startLevel(uid, getLevel()).then((res) => {
+        setSol(res);
+        generateVal(res);
+        generateVal1(res);
+      });
+  }, [, loading_comp]);
 
   const check = () => {
     if (
       value.trim() == sol.split("~")[0] &&
       value1.trim() == sol.split("~")[1] &&
-      value2.trim() == sol.split("~")[2] 
+      value2.trim() == sol.split("~")[2]
     ) {
       updateLevel(uid, 12, "mediu");
       alert("e ok");
@@ -40,45 +80,6 @@ function Level11({ uid, loading_comp }) {
       }
     });
   };
- 
-
-  const generateVal = () => {
-    const cifre = [0, 1];
-    let array = [];
-    for (let i = 0; i < 20; i++) {
-      array.push(
-        parseInt(
-          Array.from(
-            { length: 20 },
-            () => cifre[Math.floor(Math.random() * cifre.length)]
-          ).join("")
-        )
-      );
-    }
-
-    array[Math.floor(Math.random() * array.length)] =
-      sol.split("~")[0];
-    return array;
-  };
-  const generateVal1 = () => {
-    const cifre = [1, 2, 3, 4];
-    let array = [];
-    for (let i = 0; i < 20; i++) {
-      array.push(
-        parseInt(
-          Array.from(
-            { length: 20 },
-            () => cifre[Math.floor(Math.random() * cifre.length)]
-          ).join("")
-        )
-      );
-    }
-    const index = Math.floor(Math.random() * array.length);
-    array[index] = sol.split("~")[1];
-    return array;
-  };
-  const [generated, setg] = useState(generateVal());
-  const [generated1, setg1] = useState(generateVal1());
 
   return (
     <div className="level">

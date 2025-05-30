@@ -21,6 +21,7 @@ function Level10({ uid, loading_comp }) {
       alert("nu e ok");
     }
   };
+  
   const hint = async (uid, level) => {
     await getHint(uid, level).then((res) => {
        if (res.data.ok) {
