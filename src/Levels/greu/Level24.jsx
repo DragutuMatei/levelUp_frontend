@@ -12,19 +12,16 @@ function Level24({ uid, loading_comp }) {
     if (!loading_comp) startLevel(uid, getLevel());
   }, [, loading_comp]);
   const check = () => {
-    updateLevel(
-      { rez1: text.trim().toLowerCase(), rez2: text.trim().toLowerCase() },
-      uid,
-      getLevel() + 1,
-      "greu"
-    ).then((res) => {
-      if (res.data.ok) {
-        alert(res.data.message);
-        to(`/level${getLevel() + 1}`);
-      } else {
-        alert(res.data.message);
+    updateLevel(text.trim().toLowerCase(), uid, getLevel() + 1, "greu").then(
+      (res) => {
+        if (res.data.ok) {
+          alert(res.data.message);
+          to(`/level${getLevel() + 1}`);
+        } else {
+          alert(res.data.message);
+        }
       }
-    });
+    );
   };
   const hint = async (uid, level) => {
     await getHint(uid, level).then((res) => {
