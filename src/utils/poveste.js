@@ -36,7 +36,7 @@ export const povesti = [
     `Examinează stocarea locală a browserului pentru urme ale activității recente.`,
   ],
   [
-    `Informația extrasă din sesionstorage a adus o întorsătură. Nu, Matei nu era criminalul. Datele indicau o altă poveste, una a unor activități digitale dubioase, dar fără legătură aparentă cu crima. Totuși, intuiția îi spunea lui Mihail că Matei rămânea o piesă importantă. A trecut la fișierele de pe disc, dar s-a lovit de o protecție bizară: un script rearanja totul, într-un dans digital haotic, la fiecare 15 secunde. O căutare era imposibilă. Și totuși, într-o fracțiune de secundă, a zărit-o: o poză. Aparent banală, dar densă, încărcată cu text ascuns. Era acesta următorul indiciu?`,
+    `Informația extrasă din sesionstorage a adus o întorsătură. Nu, Matei nu era criminalul. Datele indicau o altă poveste, una a unor activități digitale dubioase, dar fără legătură aparentă cu crima. Totuși, intuiția îi spunea lui Mihail că Matei rămânea o piesă importantă. A trecut la fișierele de pe disc, dar s-a lovit de o protecție bizară: un script rearanja cu totul, într-un dans digital haotic, la fiecare 15 secunde. O căutare era imposibilă. Și totuși, într-o fracțiune de secundă, a zărit-o: o poză. Aparent banală, dar densă, încărcată cu text ascuns. Era acesta următorul indiciu?`,
     `Localizează și interacționează cu imaginea suspectă în mijlocul amestecului de fișiere.`,
   ],
   [
@@ -74,7 +74,7 @@ export const povesti = [
   ],
   [
     `Fragmentele s-au unit, formând un text scurt, dar ciudat. Gio a explicat: erau cuvinte auzite întâmplător la CADathon, voci de voluntari. Vorbiseră despre Andrei? Despre bani? Voluntarii. O nouă pistă. Unul dintre ei putea fi martorul cheie. Trebuia să-i contacteze. Dar când a încercat să acceseze lista, s-a lovit de un ecran de login. Sesiunea Google expirase, iar parola... i se ștersese din minte. Și atunci, și-a amintit. Credențialele găsite anterior. Să fi fost ele lăsate intenționat? Pentru acest moment? Pentru acest cont?`,
-    `Folosește credențialele găsite anterior pentru a accesa contul blocat.`,
+    `Folosește credențialele găsite pentru a accesa contul blocat.`,
   ],
   [
     `Credențialele au funcționat. Un click, și contul s-a deschis. A navigat direct la contacte. Dar lista voluntarilor era un haos. Nume inversate, prenume combinate, un puzzle digital menit să încurce. Cineva intrase și aici. Altcineva care nu voia ca el să ajungă la voluntari. O altă barieră. Trebuia să descâlcească ițele, să pună numele la locul lor, să găsească acei martori înainte să fie prea târziu.`,
@@ -109,5 +109,3 @@ export const povesti = [
     `Găsește credențialele de logare ascunse în datele de rețea ale browser-ului.`,
   ],
 ];
-
-
